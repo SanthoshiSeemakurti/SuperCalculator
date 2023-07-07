@@ -92,7 +92,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688707249519</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Front end Testing Calculator app cucumber pom testNG java automation project">
+      <option name="closed" value="true" />
+      <created>1688707552332</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1688707552332</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
