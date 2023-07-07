@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "d6d8ddbc-a3f7-4774-a57d-657a04222a46",
+		"name": "LimeHome",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19780805"
+	},
+	"item": [
+		{
+			"name": "LimeHome129AachenProperty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Status code validation",
+							"pm.test(\"Status code is 200\",()=> {",
+							"     pm.response.to.have.status (200);",
+							"});",
+							"",
+							"// Content-Type header validation",
+							"    pm.test(\"Content-Type header is present\", () => {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"    });",
+							"    pm.test(\"Content-Type header is application/json\", () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');",
+							"    });",
+							"",
+							"// Response time validation",
+							"pm.test(\"Response time is less than 200ms\", () => {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"//response body validations",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Test data type of the response\", () => {",
+							"  pm.expect(jsonData).to.be.an(\"object\");",
+							"  pm.expect(jsonData.payload.id).to.be.a(\"number\");",
+							"  pm.expect(jsonData.payload.name).to.be.an(\"string\");",
+							"  pm.expect(jsonData.payload.city).to.be.an(\"string\");",
+							"  pm.expect(jsonData.payload.city_id).to.be.an(\"number\");",
+							"  pm.expect(jsonData.payload.street).to.be.an(\"string\");",
+							"  pm.expect(jsonData.payload.location).to.be.an(\"object\");",
+							"pm.expect(jsonData.payload.images).to.be.an(\"array\");",
+							"});",
+							"",
+							"// Test array properties validation",
+							"pm.test(\"Test array properties\", () => {",
+							"    //images array ",
+							"  pm.expect(jsonData.payload.images[0].unit_group_ids).to.have.members([9]);",
+							"});",
+							"",
+							"//Json feilds in responds validation",
+							"pm.test(\"Value of feild in responds\", () => {",
+							"  var jsonData =pm.response.json();",
+							"    // Property Id validation",
+							"  pm.expect(jsonData.payload.id).to.eql(129);",
+							"  // Property name validation ",
+							"  pm.expect(jsonData.payload.name).to.eql(\"aachen vereinsstraße\");",
+							"  //City validation",
+							"  pm.expect(jsonData.payload.city).to.eql(\"aachen\");",
+							"  //City id validation",
+							"  pm.expect(jsonData.payload.city_id).to.eql(27);",
+							"  //street name validation",
+							"  pm.expect(jsonData.payload.street).to.eql(\"vereinsstraße\");",
+							"  //check_in_time validation",
+							"  pm.expect(jsonData.payload.default_check_in_time).to.eql(\"15:00\");",
+							"  //check_out_time validation",
+							"  pm.expect(jsonData.payload.default_check_out_time).to.eql(\"11:00\");",
+							"  //Property description validation",
+							"  pm.expect(jsonData.payload.description).to.eqls(\"In the middle of Aachen's city center you will find our limehome Aachen Vereinsstraße in a quiet side street. Due to the convenient location, you will find the perfect place to escape the hustle and bustle of the city center and start the day relaxed. The connection with public transport could not be better, as the main train station is only 270 m away.\");",
+							"    //Things to know description validation",
+							"    pm.expect(jsonData.payload.things_to_know).to.eql(\"Please note: in order to receive your personal access code, you have to complete our online check-in. You will receive the link and detailed instructions by email after your booking.\");",
+							"    //Parking description validation",
+							"    pm.expect(jsonData.payload.parking).to.eql(\"Unfortunately, there are no private parking spaces available in our limehome. However, with a little luck you will find a paid parking space in the surrounding streets. If you are looking for a covered parking space, you can also park your car in the nearest APAG parking garage Hauptbahnhof, which is only 400 meters away on foot.\"); ",
+							"    ",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.limehome.com/properties/v1/public/properties/129",
+					"protocol": "https",
+					"host": [
+						"api",
+						"limehome",
+						"com"
+					],
+					"path": [
+						"properties",
+						"v1",
+						"public",
+						"properties",
+						"129"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
