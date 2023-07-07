@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Super Calculator Suite" verbose="2" parallel="classes" thread-count="5">
+    <test name="Math operations of two numbers">
+        <classes>
+            <class name="Runners.TestRunner"/>
+        </classes>
+    </test>
+</suite>
